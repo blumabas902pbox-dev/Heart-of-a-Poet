@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Heart of a Poet</title>
-    
     <style>
         @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400&family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap');
 
@@ -164,11 +163,8 @@
             text-transform: uppercase;
         }
     </style>
-    
 </head>
 <body>
-
-    <audio id="bg-music" src="Instrumental.mp3" loop preload="auto"></audio>
 
     <div class="progress-indicator" id="scroll-progress"></div>
     <canvas id="fireflies"></canvas>
@@ -178,6 +174,8 @@
         <p>By Bryan Jay M.</p>
         <div class="scroll-prompt">Scroll softly to read slowly</div>
     </header>
+
+    <audio id="bg-music" src="Instrumental.mp3" loop load="auto"></audio>
 
     <main class="poem-wrapper">
 
@@ -236,7 +234,10 @@
             <p>A lovin' so pure of heart is made of gold.</p>
         </div>
 
-        <div class="thank-you-note"><p>Thanks for Reading 🫶</p></div>
+        <div class="stanza couplet">
+            <p>Thanks for Reading 🫶</p>
+        </div>
+
     </main>
 
     <footer>
@@ -364,7 +365,6 @@
 
         document.addEventListener('click', initiateAudio);
         document.addEventListener('scroll', initiateAudio);
-    </script>
-    
+    </script>    
 </body>
 </html>
