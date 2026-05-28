@@ -163,6 +163,7 @@
     </style>
 
 </head>
+    
 <body>
 
     <div class="progress-indicator" id="scroll-progress"></div>
@@ -371,15 +372,29 @@
         renderLoop();
 
         const bgMusic = document.getElementById('bg-music');
-        const initiateAudioOnScroll = () => {
-            bgMusic.play().catch(error => {
-                console.log("Autoplay background restrictions applied: ", error);
+        
+        const initiateAudioOnMovement = () => {
+            bgMusic.play().then(() => {
+                
+                clearMovementListeners();
+            }).catch(error => {
+                console.log("Browser logic restricted immediate scroll playback: ", error);
             });
-            window.removeEventListener('scroll', initiateAudioOnScroll);
         };
 
-        window.addEventListener('scroll', initiateAudioOnScroll);
+        const clearMovementListeners = () => {
+            window.removeEventListener('scroll', initiateAudioOnMovement);
+            window.removeEventListener('wheel', initiateAudioOnMovement);
+            window.removeEventListener('touchmove', initiateAudioOnMovement);
+            window.removeEventListener('touchstart', initiateAudioOnMovement);
+        };
+        
+        window.addEventListener('scroll', initiateAudioOnMovement);
+        window.addEventListener('wheel', initiateAudioOnMovement);
+        window.addEventListener('touchmove', initiateAudioOnMovement);
+        window.addEventListener('touchstart', initiateAudioOnMovement);
 
     </script>    
+    
 </body>
 </html>
